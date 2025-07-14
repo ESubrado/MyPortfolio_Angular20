@@ -1,0 +1,57 @@
+
+<section class="home-banner-area">
+    <div class="container">
+        <div class="row fullscreen d-flex align-items-center justify-content-between" style="height: 937px;">
+            
+          <div class="list row">
+            <div class="col-md-8">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search by title"
+                  [(ngModel)]="title"
+                  />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="searchTitle()"
+                    >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4>Stories List</h4>
+              <ul class="list-group">
+                @for (story of stories; track story; let i = $index) {
+                  <li
+                    class="list-group-item"
+                    [class.active]="i == currentIndex"
+                    (click)="setActiveTutorial(story, i)"
+                    >
+                    {{ story.title }}
+                  </li>
+                }
+              </ul>
+
+              <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+                Remove All
+              </button>
+            </div>
+            <div class="col-md-6">
+              <app-tutorial-details
+                [viewMode]="true"
+                [currentStory]="currentStory"
+              ></app-tutorial-details>
+            </div>
+          </div>
+
+        </div>
+    </div>
+</section>
+
+
+
