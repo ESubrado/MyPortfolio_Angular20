@@ -1,0 +1,33 @@
+<h2>User Registration</h2>
+
+<form [formGroup]="myStoryForm" (ngSubmit)="onSubmit()">
+  <!-- Username -->
+  <div>
+    <label for="username">Username:</label>
+    <input id="username" formControlName="username" />
+    <div *ngIf="myStoryForm.get('username')?.invalid && myStoryForm.get('username')?.touched">
+      Username is required.
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" />
+    <div *ngIf="myStoryForm.get('email')?.invalid && myStoryForm.get('email')?.touched">
+      A valid email is required.
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" formControlName="password" />
+    <div *ngIf="myStoryForm.get('password')?.invalid && myStoryForm.get('password')?.touched">
+      Password must be at least 6 characters long.
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="myStoryForm.invalid">Register</button>
+</form>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Stories } from 'src/app/models/story.model';
 import { StoryService } from 'src/app/services/story.service';
@@ -10,20 +10,22 @@ import { StoryService } from 'src/app/services/story.service';
     standalone: false
 })
 export class AddStoryComponent {
+
+  @Output() formSubmit = new EventEmitter<any>();
+  myForm: FormGroup;
+
   story: Stories = {
     title: '',
     description: '',
     published: false
   };
   submitted = false;
-  formVisible = false;
-
-  myForm: FormGroup;
+  formVisible = false;  
 
   constructor(private tutorialService: StoryService, private fb: FormBuilder) {
     this.myForm = this.fb.group({
-      //name: ['', Validators.required],
-      //email: ['', [Validators.required, Validators.email]],
+      title: ['', Validators.required],
+      description: ['', [Validators.required]],
     });
   }
 
@@ -42,6 +44,7 @@ export class AddStoryComponent {
       next: (res) => {
         console.log(res);
         this.submitted = true;
+        location.reload();
       },
       error: (e) => console.error(e)
     });
