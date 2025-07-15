@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Stories } from 'src/app/models/tutorial.model';
-import { StoryService } from 'src/app/services/tutorial.service';
+import { Stories } from 'src/app/models/story.model';
+import { StoryService } from 'src/app/services/story.service';
 
 @Component({
-    selector: 'app-tutorials-list',
-    templateUrl: './tutorials-list.component.html',
-    styleUrls: ['./tutorials-list.component.css'],
+    selector: 'app-stories-list',
+    templateUrl: './stories-list.component.html',
+    styleUrls: ['./stories-list.component.css'],
     standalone: false
 })
-export class TutorialsListComponent implements OnInit {
+export class StoriesListComponent implements OnInit {
   stories?: Stories[];
   currentStory: Stories = {};
   currentIndex = -1;

@@ -22,8 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 db.mongoose
   .connect(db.url, {
-    //useNewUrlParser: true,
-    //useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   })
   .then(() => {
     console.log("Connected to the database!");
@@ -36,7 +36,10 @@ db.mongoose
 // simple route
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to CRUD application." });
+    
 });
+
+require("./app/routes/stories.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
