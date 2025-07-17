@@ -1,4 +1,4 @@
-<div>
+<div [formGroup]="myForm" (ngSubmit)="saveTutorial()">
   <div class="submit-form">
     @if (!submitted) {
       <div>
@@ -7,8 +7,8 @@
           <input
             type="text"
             class="form-control"
-            id="title"
-            required
+            formControlName="title"
+            id="title"    
             [(ngModel)]="story.title"
             name="title"
             />
@@ -18,19 +18,20 @@
           <input
             class="form-control"
             id="description"
-            required
+            formControlName="description"          
             [(ngModel)]="story.description"
             name="description"
             />
         </div>
-        <button (click)="saveTutorial()" class="btn btn-success">Submit</button>
+        <button type="submit" (click)="saveTutorial()" class="btn btn-success">Submit</button>
       </div>
     }
 
     @if (submitted) {
       <div>
         <h4>Tutorial was submitted successfully!</h4>
-        <button class="btn btn-success" (click)="newTutorial()">Add</button>
+        <!-- <button class="btn btn-success" (click)="newTutorial()">Add</button> -->
+        <!-- <button type="submit" class="btn btn-success">Add</button> -->
       </div>
     }
   </div>

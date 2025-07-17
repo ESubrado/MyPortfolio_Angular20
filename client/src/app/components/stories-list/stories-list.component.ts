@@ -1,23 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Stories } from 'src/app/models/tutorial.model';
-import { StoryService } from 'src/app/services/tutorial.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Stories } from 'src/app/models/story.model';
+import { StoryService } from 'src/app/services/story.service';
+import { AddStoryComponent } from '../add-story/add-story.component';
 
 @Component({
-    selector: 'app-tutorials-list',
-    templateUrl: './tutorials-list.component.html',
-    styleUrls: ['./tutorials-list.component.css'],
-    standalone: false
+    selector: 'app-stories-list',
+    templateUrl: './stories-list.component.html',
+    styleUrls: ['./stories-list.component.css'],
+    standalone: false,   
 })
-export class TutorialsListComponent implements OnInit {
-  stories?: Stories[];
+export class StoriesListComponent implements OnInit {
+  public stories? : Stories[] | any;
   currentStory: Stories = {};
   currentIndex = -1;
   title = '';
 
-  constructor(private storyService: StoryService) {}
+  constructor(private storyService: StoryService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.retrieveTutorials();
+  }
+
+  openFormModal() {
+    const dialogRef = this.dialog.open(AddStoryComponent, {panelClass: "mobile-width"});
+
+    dialogRef.componentInstance.formSubmit.subscribe((data: any) => {
+      //console.log('Form submitted with:', data);
+      dialogRef.close();
+    });
   }
 
   retrieveTutorials(): void {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Stories } from '../models/tutorial.model';
+import { Stories } from '../models/story.model';
 
 const baseUrl = 'http://localhost:8080/api/stories';
 

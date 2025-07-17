@@ -1,0 +1,10 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.item-border {
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+}

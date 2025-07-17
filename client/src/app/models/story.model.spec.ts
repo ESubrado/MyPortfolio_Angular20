@@ -1,6 +1,6 @@
-import { Stories } from './tutorial.model';
+import { Stories } from './story.model';
 
-describe('Tutorial', () => {
+describe('Stories', () => {
   it('should create an instance', () => {
     expect(new Stories()).toBeTruthy();
   });

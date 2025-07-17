@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StoryService } from 'src/app/services/tutorial.service';
+import { StoryService } from 'src/app/services/story.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Stories } from 'src/app/models/tutorial.model';
+import { Stories } from 'src/app/models/story.model';
 
 @Component({
-    selector: 'app-tutorial-details',
-    templateUrl: './tutorial-details.component.html',
-    styleUrls: ['./tutorial-details.component.css'],
+    selector: 'app-story-details',
+    templateUrl: './story-details.component.html',
+    styleUrls: ['./story-details.component.css'],
     standalone: false
 })
-export class TutorialDetailsComponent implements OnInit {
+export class StoryDetailsComponent implements OnInit {
   @Input() viewMode = false;
 
   @Input() currentStory: Stories = {
@@ -21,7 +21,7 @@ export class TutorialDetailsComponent implements OnInit {
   message = '';
 
   constructor(
-    private tutorialService: StoryService,
+    private storyService: StoryService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -34,7 +34,7 @@ export class TutorialDetailsComponent implements OnInit {
   }
 
   getTutorial(id: string): void {
-    this.tutorialService.get(id).subscribe({
+    this.storyService.get(id).subscribe({
       next: (data) => {
         this.currentStory = data;
         console.log(data);
@@ -52,7 +52,7 @@ export class TutorialDetailsComponent implements OnInit {
 
     this.message = '';
 
-    this.tutorialService.update(this.currentStory.id, data).subscribe({
+    this.storyService.update(this.currentStory.id, data).subscribe({
       next: (res) => {
         console.log(res);
         this.currentStory.published = status;
@@ -67,7 +67,7 @@ export class TutorialDetailsComponent implements OnInit {
   updateTutorial(): void {
     this.message = '';
 
-    this.tutorialService
+    this.storyService
       .update(this.currentStory.id, this.currentStory)
       .subscribe({
         next: (res) => {
@@ -81,7 +81,7 @@ export class TutorialDetailsComponent implements OnInit {
   }
 
   deleteTutorial(): void {
-    this.tutorialService.delete(this.currentStory.id).subscribe({
+    this.storyService.delete(this.currentStory.id).subscribe({
       next: (res) => {
         console.log(res);
         this.router.navigate(['/tutorials']);
