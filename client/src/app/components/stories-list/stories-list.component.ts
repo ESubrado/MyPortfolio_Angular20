@@ -3,14 +3,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { Stories } from 'src/app/models/story.model';
 import { StoryService } from 'src/app/services/story.service';
 import { AddStoryComponent } from '../add-story/add-story.component';
+
 @Component({
     selector: 'app-stories-list',
     templateUrl: './stories-list.component.html',
     styleUrls: ['./stories-list.component.css'],
-    standalone: false,
+    standalone: false,   
 })
 export class StoriesListComponent implements OnInit {
-  stories?: Stories[];
+  public stories? : Stories[] | any;
   currentStory: Stories = {};
   currentIndex = -1;
   title = '';

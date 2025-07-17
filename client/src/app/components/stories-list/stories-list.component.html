@@ -28,17 +28,26 @@
             </div>
             <div class="col-md-6">
               <h4>Stories List</h4>
-              <ul class="list-group">
+              <!-- <ul class="list-group py-2">
                 @for (story of stories; track story; let i = $index) {
                   <li
-                    class="list-group-item"
+                    class="list-group-item my-2"
                     [class.active]="i == currentIndex"
                     (click)="setActiveTutorial(story, i)"
                     >
                     {{ story.title }}
                   </li>
                 }
-              </ul>
+              </ul> -->
+              <kendo-listview [kendoListViewBinding]="stories" [itemClass]="{'item-border': true}"> 
+                <ng-template kendoListViewItemTemplate let-dataItem="dataItem" let-isFirst="isFirst">
+                  <div (click)="setActiveTutorial(dataItem, dataItem.id)">
+                    <app-story-card  class="story" [story]="dataItem" [borderTop]="!isFirst">                      
+                    </app-story-card>
+                  </div>
+                    
+                </ng-template>
+              </kendo-listview>
 
               <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
                 Remove All

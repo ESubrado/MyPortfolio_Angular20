@@ -9,13 +9,17 @@ import { providePrimeNG } from 'primeng/config';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ModalComponentComponent } from './components/modal-component/modal-component.component';
+import { ModalComponentComponent } from './components/subcomponents/modal-component/modal-component.component';
 import { AddStoryComponent } from './components/add-story/add-story.component';
 import { StoryDetailsComponent } from './components/story-details/story-details.component';
 import { StoriesListComponent } from './components/stories-list/stories-list.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AddStoryFormComponent } from './components/add-story-form/add-story-form.component';
+import { KENDO_LISTVIEW } from '@progress/kendo-angular-listview'; 
+//import { ListViewComponent } from '@progress/kendo-angular-listview';
+import { ListViewModule } from '@progress/kendo-angular-listview';
+import { StoryCardComponent } from './components/subcomponents/story-card/story-card.component';
 
 import Aura from '@primeuix/themes/aura';
 import { NgIf } from '@angular/common';
@@ -38,7 +42,10 @@ import { NgIf } from '@angular/common';
         NgbModule,
         FormsModule, 
         ReactiveFormsModule,
-        AddStoryFormComponent,                   
+        AddStoryFormComponent,  
+        //ListViewComponent,
+        ListViewModule,
+        StoryCardComponent
     ], 
     exports: [
         ReactiveFormsModule

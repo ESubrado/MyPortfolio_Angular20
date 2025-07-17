@@ -4,7 +4,7 @@ import { NoopAnimationsModule  } from '@angular/platform-browser/animations';
 import { KENDO_PROGRESSBAR } from '@progress/kendo-angular-progressbar';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll'
 
-import { ModalComponentComponent } from '../modal-component/modal-component.component';
+import { ModalComponentComponent } from '../subcomponents/modal-component/modal-component.component';
 
 @Component({
   selector: 'app-home',
