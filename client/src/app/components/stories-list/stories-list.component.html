@@ -39,13 +39,12 @@
                   </li>
                 }
               </ul> -->
-              <kendo-listview [kendoListViewBinding]="stories" [itemClass]="{'item-border': true}"> 
+              <kendo-listview [kendoListViewBinding]="stories()" [itemClass]="{'item-border': true}"> 
                 <ng-template kendoListViewItemTemplate let-dataItem="dataItem" let-isFirst="isFirst">
                   <div (click)="setActiveTutorial(dataItem, dataItem.id)">
                     <app-story-card  class="story" [story]="dataItem" [borderTop]="!isFirst">                      
                     </app-story-card>
-                  </div>
-                    
+                  </div>                    
                 </ng-template>
               </kendo-listview>
 

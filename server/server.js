@@ -6,7 +6,7 @@ const app = express();
 //app.use(...);
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "*"
 };
 
 //require("./app/routes/tutorial.routes")(app);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Stories } from 'src/app/models/story.model';
 import { StoryService } from 'src/app/services/story.service';
@@ -11,7 +11,8 @@ import { AddStoryComponent } from '../add-story/add-story.component';
     standalone: false,   
 })
 export class StoriesListComponent implements OnInit {
-  public stories? : Stories[] | any;
+  //public stories? : Stories[] | any;
+  stories = signal(<Array<Stories>>([]));
   currentStory: Stories = {};
   currentIndex = -1;
   title = '';
@@ -34,7 +35,8 @@ export class StoriesListComponent implements OnInit {
   retrieveTutorials(): void {
     this.storyService.getAll().subscribe({
       next: (data) => {
-        this.stories = data;
+        //this.stories = data;
+        this.stories.set(data);
         console.log(data);
       },
       error: (e) => console.error(e)
@@ -68,7 +70,8 @@ export class StoriesListComponent implements OnInit {
 
     this.storyService.findByTitle(this.title).subscribe({
       next: (data) => {
-        this.stories = data;
+        //this.stories = data;        
+        this.stories.set(data);
         console.log(data);
       },
       error: (e) => console.error(e)
